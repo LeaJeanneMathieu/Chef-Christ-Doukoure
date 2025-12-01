@@ -1,12 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../components/Contact.css';
 
 const ContactPage = () => {
   const sectionRef = useRef(null);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -74,9 +72,6 @@ const ContactPage = () => {
       <Header />
       <section className="contact section" ref={sectionRef}>
         <div className="container">
-          <button className="back-button" onClick={() => navigate('/')}>
-            ← Retour
-          </button>
           <h1 className="section-title">CONTACT</h1>
           <div className="contact-content">
             <p className="contact-intro">

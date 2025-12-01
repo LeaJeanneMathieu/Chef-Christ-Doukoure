@@ -1,19 +1,13 @@
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './MenuPage.css';
 
 const MenuPage = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="menu-page">
       <Header />
       <div className="menu-page-content">
         <div className="container">
-          <button className="back-button" onClick={() => navigate('/')}>
-            ← Retour
-          </button>
           <h1 className="menu-page-title">LE MENU</h1>
           <p className="menu-page-intro">
             Le Chef Christ DOUKOURÉ vous invite à découvrir une sélection d'entrées, de plats et de desserts, 

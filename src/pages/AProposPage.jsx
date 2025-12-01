@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import aproposImage from '../assets/images/DSCF0396_copie.jpg';
@@ -7,7 +6,6 @@ import '../components/APropos.css';
 
 const AProposPage = () => {
   const sectionRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,9 +31,6 @@ const AProposPage = () => {
       <Header />
       <section className="apropos section" ref={sectionRef}>
         <div className="container">
-          <button className="back-button" onClick={() => navigate('/')}>
-            ← Retour
-          </button>
           <h1 className="section-title">À PROPOS</h1>
           <div className="apropos-content">
             <div className="apropos-image">

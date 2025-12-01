@@ -48,11 +48,14 @@ const Header = () => {
   };
 
   const handleHomeClick = (e) => {
-    if (location.pathname !== '/') {
-      return; // Let Link handle navigation
-    }
     e.preventDefault();
-    scrollToSection('accueil');
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home
+      window.location.href = '/';
+      return;
+    }
+    // If already on home page, scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -62,7 +65,7 @@ const Header = () => {
           <img src={logo} alt="Chef Christ Doukouré" />
         </Link>
         <nav className="header-nav">
-          <a href="#accueil" onClick={handleHomeClick}>ACCUEIL</a>
+          <a href="/" onClick={handleHomeClick}>ACCUEIL</a>
           <a href="#prestations" onClick={(e) => { e.preventDefault(); scrollToSection('prestations'); }}>RÉALISATIONS</a>
           <Link to="/menu">MENU</Link>
           <Link to="/apropos">A PROPOS</Link>

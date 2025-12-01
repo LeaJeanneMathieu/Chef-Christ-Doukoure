@@ -64,27 +64,26 @@ const Evenements = () => {
       <div className="container">
         <div className="evenements-container">
           <div className="evenements-content">
-            <h2 className="section-title">DES ÉVÉNEMENTS<br />SUR MESURE</h2>
             <div className="evenements-text">
+              <h2 className="evenements-title">DES ÉVÉNEMENTS<br />SUR MESURE</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Vivez une expérience gastronomique d'exception orchestrée par le Chef Christ DOUKOURÉ et ses équipes.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                culpa qui officia deserunt mollit anim id est laborum.
+                Dans le cadre de votre choix, chaque menu est imaginé pour sublimer vos envies.
               </p>
+              <p>
+                Un moment privilégié, où la gastronomie se mêle à l'élégance, la générosité et l'émotion.
+              </p>
+              <button className="evenements-button" onClick={scrollToPrestations}>
+                DÉCOUVRIR
+              </button>
             </div>
           </div>
           <div className="evenements-image">
             <div className="evenements-image-wrapper">
               <img ref={imageRef} src={eventImage} alt="Préparation culinaire" />
             </div>
-            <button className="evenements-button" onClick={scrollToPrestations}>
-              DÉCOUVRIR
-            </button>
           </div>
         </div>
       </div>
