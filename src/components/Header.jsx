@@ -7,6 +7,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -58,18 +59,31 @@ const Header = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''} ${!isVisible ? 'hidden' : ''}`}>
       <div className="header-container">
-        <Link to="/" className="header-logo">
+        <Link to="/" className="header-logo" onClick={closeMobileMenu}>
           <img src={logo} alt="Chef Christ Doukouré" />
         </Link>
-        <nav className="header-nav">
-          <a href="/" onClick={handleHomeClick}>ACCUEIL</a>
-          <a href="#prestations" onClick={(e) => { e.preventDefault(); scrollToSection('prestations'); }}>RÉALISATIONS</a>
-          <Link to="/menu">MENU</Link>
-          <Link to="/apropos">A PROPOS</Link>
-          <Link to="/contact">CONTACT</Link>
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
+          <span className={isMobileMenuOpen ? 'open' : ''}></span>
+          <span className={isMobileMenuOpen ? 'open' : ''}></span>
+          <span className={isMobileMenuOpen ? 'open' : ''}></span>
+        </button>
+        <nav className={`header-nav ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+          <a href="/" onClick={(e) => { handleHomeClick(e); closeMobileMenu(); }}>ACCUEIL</a>
+          <a href="#prestations" onClick={(e) => { e.preventDefault(); scrollToSection('prestations'); closeMobileMenu(); }}>RÉALISATIONS</a>
+          <Link to="/menu" onClick={closeMobileMenu}>MENU</Link>
+          <Link to="/apropos" onClick={closeMobileMenu}>A PROPOS</Link>
+          <Link to="/contact" onClick={closeMobileMenu}>CONTACT</Link>
         </nav>
       </div>
     </header>
