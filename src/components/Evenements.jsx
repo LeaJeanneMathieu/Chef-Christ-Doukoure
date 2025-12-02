@@ -28,30 +28,43 @@ const Evenements = () => {
 
   // VRAI effet de parallaxe : l'image se déplace à une vitesse différente
   useEffect(() => {
+    let frameId = null;
+
     const handleScroll = () => {
       if (!imageRef.current || !sectionRef.current) return;
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculer quand la section est visible
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        // Calculer la progression de scroll de la section (0 à 1)
-        const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
-        
-        // L'image se déplace de -20% à +20% de sa hauteur
-        // Légèrement plus rapide / prononcé
-        const maxMove = 20; // pourcentage
-        const yPos = (scrollProgress - 0.5) * maxMove * 2;
-        
-        imageRef.current.style.transform = `translate3d(0, ${yPos}%, 0)`;
+      if (frameId) {
+        cancelAnimationFrame(frameId);
       }
+
+      frameId = window.requestAnimationFrame(() => {
+        const rect = sectionRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calculer quand la section est visible
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          // Calculer la progression de scroll de la section (0 à 1)
+          const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+          
+          // L'image se déplace de -20% à +20% de sa hauteur
+          // Légèrement plus rapide / prononcé
+          const maxMove = 20; // pourcentage
+          const yPos = (scrollProgress - 0.5) * maxMove * 2;
+          
+          imageRef.current.style.transform = `translate3d(0, ${yPos}%, 0)`;
+        }
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Appel initial
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (frameId) {
+        cancelAnimationFrame(frameId);
+      }
+    };
   }, []);
 
   const scrollToPrestations = () => {

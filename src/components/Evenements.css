@@ -74,6 +74,8 @@
   will-change: transform;
   /* Utiliser translate3d pour de meilleures performances GPU */
   transform: translate3d(0, 0, 0);
+  /* Plus réactif mais toujours fluide */
+  transition: transform 0.12s ease-out;
 }
 
 .evenements-button {
