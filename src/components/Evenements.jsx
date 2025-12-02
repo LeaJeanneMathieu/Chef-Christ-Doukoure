@@ -46,9 +46,9 @@ const Evenements = () => {
           // Calculer la progression de scroll de la section (0 à 1)
           const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
           
-          // L'image se déplace de -20% à +20% de sa hauteur
-          // Légèrement plus rapide / prononcé
-          const maxMove = 20; // pourcentage
+          // L'image se déplace de -25% à +25% de sa hauteur
+          // Effet un peu plus rapide et marqué
+          const maxMove = 25; // pourcentage
           const yPos = (scrollProgress - 0.5) * maxMove * 2;
           
           imageRef.current.style.transform = `translate3d(0, ${yPos}%, 0)`;
