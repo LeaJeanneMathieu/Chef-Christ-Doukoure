@@ -1,11 +1,12 @@
 import { useEffect, useRef } from 'react';
-import eventImage from '../assets/images/DSCF0533_copie.jpg';
+import eventImage from '../assets/images/DSCF0484_copie.jpg';
 import './Evenements.css';
 
 const Evenements = () => {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
 
+  // Animation fade-in à l'apparition
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -25,29 +26,30 @@ const Evenements = () => {
     return () => observer.disconnect();
   }, []);
 
+  // VRAI effet de parallaxe : l'image se déplace à une vitesse différente
   useEffect(() => {
     const handleScroll = () => {
       if (!imageRef.current || !sectionRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const windowCenter = windowHeight / 2;
       
-      // Calculate parallax effect when section is in viewport
+      // Calculer quand la section est visible
       if (rect.top < windowHeight && rect.bottom > 0) {
-        // Calculate how far the section center is from viewport center
-        const sectionCenter = rect.top + (rect.height / 2);
-        const distanceFromCenter = sectionCenter - windowCenter;
+        // Calculer la progression de scroll de la section (0 à 1)
+        const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
         
-        // Parallax effect: image moves at 0.3x the scroll speed
-        // This creates a smooth parallax effect
-        const parallaxOffset = distanceFromCenter * 0.3;
-        imageRef.current.style.transform = `translateY(${parallaxOffset}px) scale(1.1)`;
+        // L'image se déplace de -20% à +20% de sa hauteur
+        // Légèrement plus rapide / prononcé
+        const maxMove = 20; // pourcentage
+        const yPos = (scrollProgress - 0.5) * maxMove * 2;
+        
+        imageRef.current.style.transform = `translate3d(0, ${yPos}%, 0)`;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial call
+    handleScroll(); // Appel initial
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -65,7 +67,9 @@ const Evenements = () => {
         <div className="evenements-container">
           <div className="evenements-content">
             <div className="evenements-text">
-              <h2 className="evenements-title">DES ÉVÉNEMENTS<br />SUR MESURE</h2>
+              <h2 className="evenements-title">
+                DES ÉVÉNEMENTS<br />SUR MESURE
+              </h2>
               <p>
                 Vivez une expérience gastronomique d'exception orchestrée par le Chef Christ DOUKOURÉ et ses équipes.
               </p>
@@ -82,7 +86,11 @@ const Evenements = () => {
           </div>
           <div className="evenements-image">
             <div className="evenements-image-wrapper">
-              <img ref={imageRef} src={eventImage} alt="Préparation culinaire" />
+              <img 
+                ref={imageRef} 
+                src={eventImage} 
+                alt="Préparation culinaire" 
+              />
             </div>
           </div>
         </div>
@@ -92,4 +100,3 @@ const Evenements = () => {
 };
 
 export default Evenements;
-
