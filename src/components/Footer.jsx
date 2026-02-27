@@ -17,6 +17,32 @@ const Footer = () => {
           <div className="footer-logo">
             <img src={logo} alt="Chef Christ Doukouré" />
           </div>
+          <div className="footer-social">
+            <span className="footer-social-label">Suivez-nous</span>
+            <div className="footer-social-links">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                TikTok
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
