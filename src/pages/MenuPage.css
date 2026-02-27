@@ -7,7 +7,7 @@
 .menu-page-content {
   flex: 1;
   padding: 120px 0 var(--spacing-xl) 0;
-  background-color: var(--color-white);
+  background: linear-gradient(180deg, #f8f6f2 0%, #f0ede8 50%, #ebe7e0 100%);
 }
 
 .back-button {
@@ -64,8 +64,36 @@
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 600;
   color: var(--color-black);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
   text-align: center;
+}
+
+.menu-photo-placeholder {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  margin: 0 auto var(--spacing-xl);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.menu-photo-placeholder:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  transform: scale(1.02);
+}
+
+.menu-photo-placeholder-label {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.35);
+  font-style: italic;
 }
 
 .menu-columns {
@@ -137,6 +165,97 @@
   font-weight: 500;
   margin: var(--spacing-xs) 0;
   text-align: center;
+  font-style: italic;
+}
+
+/* Lightbox (agrandissement) */
+.menu-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.menu-lightbox-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl);
+}
+
+.menu-lightbox-slider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.menu-lightbox-arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.menu-lightbox-arrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.menu-lightbox-arrow-left {
+  padding-right: 2px;
+}
+
+.menu-lightbox-arrow-right {
+  padding-left: 2px;
+}
+
+.menu-lightbox-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.menu-lightbox-close:hover {
+  opacity: 0.8;
+}
+
+.menu-lightbox-placeholder {
+  width: min(85vw, 500px);
+  aspect-ratio: 3/4;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.menu-lightbox-placeholder-label {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.4);
   font-style: italic;
 }
 

@@ -1,8 +1,29 @@
+import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './MenuPage.css';
 
 const MenuPage = () => {
+  const [lightbox, setLightbox] = useState({ menuId: null, index: 0 });
+
+  const openLightbox = (menuId) => {
+    setLightbox({ menuId, index: 0 });
+  };
+
+  const closeLightbox = () => {
+    setLightbox({ menuId: null, index: 0 });
+  };
+
+  const showPrevImage = (e) => {
+    e.stopPropagation();
+    setLightbox((prev) => ({ ...prev, index: 0 }));
+  };
+
+  const showNextImage = (e) => {
+    e.stopPropagation();
+    setLightbox((prev) => ({ ...prev, index: 1 }));
+  };
+
   return (
     <div className="menu-page">
       <Header />
@@ -13,16 +34,21 @@ const MenuPage = () => {
             Le Chef Christ DOUKOURÉ vous invite à découvrir une sélection d'entrées, de plats et de desserts, 
             soigneusement imaginés pour exalter chaque instant de votre repas.
           </p>
-          
-          {/* Dîner Romantique */}
           <div className="menu-section">
             <h2 className="menu-section-title">Dîner Romantique</h2>
+            <div
+              className="menu-photo-placeholder"
+              role="button"
+              tabIndex={0}
+              onClick={() => openLightbox('diner-romantique')}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique')}
+              aria-label="Agrandir la photo du menu"
+            >
+              <span className="menu-photo-placeholder-label">Photo à venir</span>
+            </div>
             <div className="menu-columns">
               <div className="menu-column">
                 <h3 className="menu-column-title">ENTREES</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Gambas en friture, sauce tartare</p>
@@ -32,9 +58,6 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Souris d'agneau</p>
@@ -46,9 +69,6 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">DESSERTS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Pavlova aux fruits rouges</p>
@@ -58,15 +78,21 @@ const MenuPage = () => {
             </div>
           </div>
 
-          {/* Menu Découverte */}
           <div className="menu-section">
             <h2 className="menu-section-title">Menu Découverte</h2>
+            <div
+              className="menu-photo-placeholder"
+              role="button"
+              tabIndex={0}
+              onClick={() => openLightbox('menu-decouverte')}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte')}
+              aria-label="Agrandir la photo du menu"
+            >
+              <span className="menu-photo-placeholder-label">Photo à venir</span>
+            </div>
             <div className="menu-columns">
               <div className="menu-column">
                 <h3 className="menu-column-title">ENTREES</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Velouté de potimarron aux moules</p>
@@ -75,9 +101,6 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Suprême de volaille</p>
@@ -89,9 +112,6 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">DESSERTS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Brioche perdue</p>
@@ -104,71 +124,46 @@ const MenuPage = () => {
             </div>
           </div>
 
-          {/* Le Menu du Chef – 5 Plats */}
-          <div className="menu-section">
-            <h2 className="menu-section-title">Le Menu du Chef – 5 Plats</h2>
-            <div className="menu-columns">
-              <div className="menu-column">
-                <h3 className="menu-column-title">ENTREES</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
-                <div className="menu-items-list">
-                  <div className="menu-item">
-                    <p className="menu-item-text">1. Céviche de daurade</p>
-                    <p className="menu-item-details">Passion • Mangue • Citron • Coriandre</p>
+          {lightbox.menuId && (
+            <div className="menu-lightbox" onClick={closeLightbox}>
+              <div
+                className="menu-lightbox-content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  className="menu-lightbox-close"
+                  onClick={closeLightbox}
+                  aria-label="Fermer"
+                >
+                  ×
+                </button>
+                <div className="menu-lightbox-slider">
+                  <button
+                    type="button"
+                    className="menu-lightbox-arrow menu-lightbox-arrow-left"
+                    onClick={showPrevImage}
+                    aria-label="Image précédente"
+                  >
+                    ‹
+                  </button>
+                  <div className="menu-lightbox-placeholder">
+                    <span className="menu-lightbox-placeholder-label">
+                      Image {lightbox.index + 1} à venir
+                    </span>
                   </div>
-                  <div className="menu-item">
-                    <p className="menu-item-text">2. Saumon "Violet GelMax 24h"</p>
-                    <p className="menu-variant">ou</p>
-                    <p className="menu-item-text">Carpaccio de Saint-Jacques aux agrumes</p>
-                  </div>
-                  <div className="menu-item">
-                    <p className="menu-item-text">3. Ravioli de Saint-Jacques, agrumes</p>
-                  </div>
-                </div>
-              </div>
-              <div className="menu-column">
-                <h3 className="menu-column-title">PLATS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
-                <div className="menu-items-list">
-                  <div className="menu-item">
-                    <p className="menu-item-text">Magret de canard</p>
-                    <p className="menu-item-details">Purée de patate douce, jus de viande miellé, betterave, figue</p>
-                    <p className="menu-variant">ou</p>
-                    <p className="menu-item-text">Homard rôti</p>
-                    <p className="menu-item-details">Risotto • Ballotine de volaille farcie • Crémeux de courgettes • Bisque</p>
-                  </div>
-                </div>
-              </div>
-              <div className="menu-column">
-                <h3 className="menu-column-title">DESSERTS</h3>
-                <div className="menu-column-image">
-                  <div className="menu-image-placeholder"></div>
-                </div>
-                <div className="menu-items-list">
-                  <div className="menu-item">
-                    <p className="menu-item-text">Riz au lait, beurre, anis</p>
-                    <p className="menu-item-text">Soufflé de popcorn</p>
-                    <p className="menu-variant">ou</p>
-                    <p className="menu-item-text">Profiterole au Bailey's</p>
-                  </div>
+                  <button
+                    type="button"
+                    className="menu-lightbox-arrow menu-lightbox-arrow-right"
+                    onClick={showNextImage}
+                    aria-label="Image suivante"
+                  >
+                    ›
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Entreprise / Catering */}
-          <div className="menu-section">
-            <h2 className="menu-section-title">Entreprise / Catering</h2>
-            <div className="menu-category">
-              <div className="menu-item">
-                <p className="menu-item-text">Dîner d'affaires — sur devis</p>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <Footer />
