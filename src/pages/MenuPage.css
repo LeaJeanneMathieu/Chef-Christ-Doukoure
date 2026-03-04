@@ -312,11 +312,13 @@
   }
 
   .menu-lightbox-slider {
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    justify-content: center;
+    max-width: 100vw;
   }
 
   .menu-lightbox-placeholder {
-    width: 78vw;
+    width: 70vw;
   }
 
   .menu-lightbox-arrow {
