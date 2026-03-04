@@ -125,14 +125,6 @@ const Galerie = () => {
               className="galerie-lightbox-content"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                type="button"
-                className="galerie-lightbox-close"
-                onClick={closeLightbox}
-                aria-label="Fermer"
-              >
-                ×
-              </button>
               <div className="galerie-lightbox-slider">
                 <button
                   type="button"
@@ -147,6 +139,14 @@ const Galerie = () => {
                   onTouchStart={handleTouchStart}
                   onTouchEnd={handleTouchEnd}
                 >
+                  <button
+                    type="button"
+                    className="galerie-lightbox-close"
+                    onClick={closeLightbox}
+                    aria-label="Fermer"
+                  >
+                    ×
+                  </button>
                   <img
                     src={images[lightboxIndex]}
                     alt={`Photo ${lightboxIndex + 1} de la galerie`}

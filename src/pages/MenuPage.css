@@ -234,15 +234,17 @@
 
 .menu-lightbox-close {
   position: absolute;
-  top: -2.5rem;
-  right: 0;
-  background: transparent;
-  border: none;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  z-index: 2;
 }
 
 .menu-lightbox-close:hover {
@@ -250,7 +252,7 @@
 }
 
 .menu-lightbox-placeholder {
-  width: min(85vw, 500px);
+  width: min(80vw, 520px);
   aspect-ratio: 3/4;
   background: #fff;
   border-radius: 8px;
@@ -258,6 +260,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .menu-lightbox-placeholder-label {
@@ -303,5 +306,49 @@
     font-size: 0.85rem;
     padding-left: var(--spacing-xs);
   }
+
+  .menu-lightbox-content {
+    padding: var(--spacing-lg);
+  }
+
+  .menu-lightbox-slider {
+    gap: var(--spacing-md);
+  }
+
+  .menu-lightbox-placeholder {
+    width: 78vw;
+  }
+
+  .menu-lightbox-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+  }
+
+  .menu-lightbox-close {
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+}
+
+.menu-lightbox-close-secondary {
+  margin-top: var(--spacing-md);
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-gold);
+  background: transparent;
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-lightbox-close-secondary:hover {
+  background: var(--color-gold);
+  color: var(--color-black);
+  border-color: var(--color-gold);
 }
 

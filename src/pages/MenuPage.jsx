@@ -206,14 +206,6 @@ const MenuPage = () => {
                 className="menu-lightbox-content"
                 onClick={(e) => e.stopPropagation()}
               >
-                <button
-                  type="button"
-                  className="menu-lightbox-close"
-                  onClick={closeLightbox}
-                  aria-label="Fermer"
-                >
-                  ×
-                </button>
                 <div className="menu-lightbox-slider">
                   <button
                     type="button"
@@ -228,6 +220,14 @@ const MenuPage = () => {
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                   >
+                    <button
+                      type="button"
+                      className="menu-lightbox-close"
+                      onClick={closeLightbox}
+                      aria-label="Fermer"
+                    >
+                      ×
+                    </button>
                     {currentImage && (
                       <img
                         src={currentImage}
