@@ -27,31 +27,11 @@ const Prestations = () => {
     <section id="prestations" className="prestations section" ref={sectionRef}>
       <div className="container">
         <h2 className="prestations-title section-title">LES RÉALISATIONS</h2>
-        <div className="prestations-grid">
-          <div className="prestation-card">
-            <div className="prestation-placeholder">
-              <div className="instagram-icon">📱</div>
-              <p>Reel Instagram</p>
-            </div>
-          </div>
-          <div className="prestation-card">
-            <div className="prestation-placeholder">
-              <div className="instagram-icon">📱</div>
-              <p>Reel Instagram</p>
-            </div>
-          </div>
-          <div className="prestation-card">
-            <div className="prestation-placeholder">
-              <div className="instagram-icon">📱</div>
-              <p>Reel Instagram</p>
-            </div>
-          </div>
-          <div className="prestation-card">
-            <div className="prestation-placeholder">
-              <div className="instagram-icon">📱</div>
-              <p>Reel Instagram</p>
-            </div>
-          </div>
+        <div className="prestations-widget-wrapper">
+          <div
+            className="elfsight-app-6de6375e-d092-42c5-9963-a7e2d4250090"
+            data-elfsight-app-lazy
+          />
         </div>
       </div>
     </section>

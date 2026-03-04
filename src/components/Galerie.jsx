@@ -4,7 +4,6 @@ import menu2 from '../../assets/Menus/Decouverte-plat.JPG';
 import menu3 from '../../assets/Menus/Decouverte-dessert.JPG';
 import menu4 from '../../assets/Menus/Romantique-entree.JPG';
 import menu5 from '../../assets/Menus/Romantique-plat.JPG';
-import romantiquePlat2 from '../../assets/Menus/Romantique-plat2.JPG';
 import menu6 from '../../assets/Menus/Romantique-dessert.JPG';
 import image1 from '../assets/images/DSCF0386_copie.jpg';
 import image2 from '../assets/images/DSCF0396_copie.jpg';
@@ -38,8 +37,8 @@ const Galerie = () => {
   }, []);
 
   // Mix de photos de menus et de photos ambiance
-  // Remplacement de "Découverte plat" par "Romantique plat 2" dans la galerie
-  const images = [menu1, image1, romantiquePlat2, image2, menu3, image3, menu4, image4];
+  // On utilise uniquement les versions plus légères des photos de menus pour améliorer le chargement
+  const images = [menu1, image1, menu2, image2, menu3, image3, menu4, image4];
 
   const openLightbox = (index) => {
     setLightboxIndex(index);

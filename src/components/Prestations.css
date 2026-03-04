@@ -24,11 +24,11 @@
   margin-left: auto;
   margin-right: auto;
 }
-
+ 
 .prestation-card {
   width: 100%;
 }
-
+ 
 .prestation-placeholder {
   width: 100%;
   aspect-ratio: 9/16; /* Format Reels Instagram (vertical) */
@@ -43,20 +43,20 @@
   position: relative;
   overflow: hidden;
 }
-
+ 
 .prestation-placeholder:hover {
   background-color: #eeeeee;
   border-color: var(--color-gold);
   transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .prestation-placeholder .instagram-icon {
   font-size: 4rem;
   margin-bottom: var(--spacing-sm);
   opacity: 0.3;
 }
-
+ 
 .prestation-placeholder p {
   font-family: var(--font-sans);
   font-size: 1rem;

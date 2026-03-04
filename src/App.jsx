@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Evenements from './components/Evenements';
-import Galerie from './components/Galerie';
 import Menu from './components/Menu';
 import Prestations from './components/Prestations';
 import Footer from './components/Footer';
@@ -11,6 +11,8 @@ import AProposPage from './pages/AProposPage';
 import ContactPage from './pages/ContactPage';
 import './App.css';
 
+const Galerie = lazy(() => import('./components/Galerie'));
+
 function Home() {
   return (
     <>
@@ -18,7 +20,9 @@ function Home() {
       <Hero />
       <Evenements />
       <Menu />
-      <Galerie />
+      <Suspense fallback={null}>
+        <Galerie />
+      </Suspense>
       <Prestations />
       <Footer />
     </>
