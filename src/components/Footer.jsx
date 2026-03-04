@@ -21,21 +21,21 @@ const Footer = () => {
             <span className="footer-social-label">Suivez-nous</span>
             <div className="footer-social-links">
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/christ.doukoure"
                 target="_blank"
                 rel="noreferrer"
               >
                 Instagram
               </a>
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/Chris.Doukoure"
                 target="_blank"
                 rel="noreferrer"
               >
                 Facebook
               </a>
               <a
-                href="https://www.tiktok.com"
+                href="https://www.tiktok.com/@christ.doukoure"
                 target="_blank"
                 rel="noreferrer"
               >
