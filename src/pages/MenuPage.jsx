@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './MenuPage.css';
@@ -16,6 +16,7 @@ const menusImages = {
 
 const MenuPage = () => {
   const [lightbox, setLightbox] = useState({ menuId: null, index: 0 });
+  const touchStartXRef = useRef(null);
 
   const openLightbox = (menuId, startIndex = 0) => {
     setLightbox({ menuId, index: startIndex });
@@ -47,6 +48,55 @@ const MenuPage = () => {
       const newIndex = (prev.index + 1) % total;
       return { ...prev, index: newIndex };
     });
+  };
+
+  const goToPrevImage = () => {
+    setLightbox((prev) => {
+      if (!prev.menuId) return prev;
+      const images = menusImages[prev.menuId] || [];
+      const total = images.length;
+      if (!total) return prev;
+      const newIndex = (prev.index - 1 + total) % total;
+      return { ...prev, index: newIndex };
+    });
+  };
+
+  const goToNextImage = () => {
+    setLightbox((prev) => {
+      if (!prev.menuId) return prev;
+      const images = menusImages[prev.menuId] || [];
+      const total = images.length;
+      if (!total) return prev;
+      const newIndex = (prev.index + 1) % total;
+      return { ...prev, index: newIndex };
+    });
+  };
+
+  const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartXRef.current === null) return;
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - touchStartXRef.current;
+
+    const SWIPE_THRESHOLD = 40;
+
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+      if (deltaX < 0) {
+        // swipe gauche -> image suivante
+        goToNextImage();
+      } else {
+        // swipe droite -> image précédente
+        goToPrevImage();
+      }
+    }
+
+    touchStartXRef.current = null;
   };
 
   const currentImages = lightbox.menuId ? menusImages[lightbox.menuId] || [] : [];
@@ -173,7 +223,11 @@ const MenuPage = () => {
                   >
                     ‹
                   </button>
-                  <div className="menu-lightbox-placeholder">
+                  <div
+                    className="menu-lightbox-placeholder"
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                  >
                     {currentImage && (
                       <img
                         src={currentImage}

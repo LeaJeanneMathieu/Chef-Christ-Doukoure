@@ -16,6 +16,7 @@ import './Galerie.css';
 const Galerie = () => {
   const sectionRef = useRef(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const touchStartXRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,6 +41,22 @@ const Galerie = () => {
   // On utilise uniquement les versions plus légères des photos de menus pour améliorer le chargement
   const images = [menu1, image1, menu2, image2, menu3, image3, menu4, image4];
 
+  const goToPrevImage = () => {
+    setLightboxIndex((prev) => {
+      if (prev === null) return prev;
+      const total = images.length;
+      return (prev - 1 + total) % total;
+    });
+  };
+
+  const goToNextImage = () => {
+    setLightboxIndex((prev) => {
+      if (prev === null) return prev;
+      const total = images.length;
+      return (prev + 1) % total;
+    });
+  };
+
   const openLightbox = (index) => {
     setLightboxIndex(index);
   };
@@ -50,20 +67,39 @@ const Galerie = () => {
 
   const showPrevImage = (e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => {
-      if (prev === null) return prev;
-      const total = images.length;
-      return (prev - 1 + total) % total;
-    });
+    goToPrevImage();
   };
 
   const showNextImage = (e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => {
-      if (prev === null) return prev;
-      const total = images.length;
-      return (prev + 1) % total;
-    });
+    goToNextImage();
+  };
+
+  const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartXRef.current === null) return;
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - touchStartXRef.current;
+
+    const SWIPE_THRESHOLD = 40;
+
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+      if (deltaX < 0) {
+        // swipe gauche -> image suivante
+        goToNextImage();
+      } else {
+        // swipe droite -> image précédente
+        goToPrevImage();
+      }
+    }
+
+    touchStartXRef.current = null;
   };
 
   return (
@@ -106,7 +142,11 @@ const Galerie = () => {
                 >
                   ‹
                 </button>
-                <div className="galerie-lightbox-placeholder">
+                <div
+                  className="galerie-lightbox-placeholder"
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd}
+                >
                   <img
                     src={images[lightboxIndex]}
                     alt={`Photo ${lightboxIndex + 1} de la galerie`}
