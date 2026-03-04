@@ -39,12 +39,12 @@ const Menu = () => {
           <div className="menu-content">
             <div className="menu-text">
               <p>
-                Le Chef Christ DOUKOURÉ vous invite à découvrir une sélection d'entrées, de plats et de desserts, 
-                soigneusement imaginés pour exalter chaque instant de votre repas.
+                Le Chef Christ DOUKOURÉ vous invite à découvrir une sélection d’entrées, de plats et de desserts, soigneusement
+                imaginés pour exalter chaque instant de votre repas.
               </p>
               <p>
-                La moindre de ses créations met à l'honneur des produits de saison et un savoir-faire inspiré 
-                des plus grandes cuisines françaises.
+                La moindre de ses créations met à l’honneur des produits de saison et un savoir-faire inspiré de la gastronomie
+                française, sublimé par ses origines.
               </p>
             </div>
             <a className="menu-link" onClick={(e) => { e.preventDefault(); handleDiscoverMenu(); }}>

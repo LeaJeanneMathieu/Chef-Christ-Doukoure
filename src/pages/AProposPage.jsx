@@ -39,19 +39,19 @@ const AProposPage = () => {
             <div className="apropos-text">
               <h2 className="apropos-chef-name">Chef Christ Doukoure</h2>
               <p>
-                Christ Doukoure n'était pas destiné à la cuisine. C'est à 19 ans qu'il découvre cet univers, 
-                presque par hasard, et il y trouve rapidement une véritable vocation. Porté par une détermination 
-                solide, il progresse rapidement et, dès l'âge de 22 ans, il prend la tête d'un restaurant reconnu, 
-                où il développe rigueur, rapidité et maîtrise technique.
+                Christ Doukoure n’était pas destiné à la cuisine. C’est à 19 ans qu’il découvre cet univers, presque par hasard, et y trouve rapidement une véritable vocation.
               </p>
               <p>
-                Au fil de ses expériences, il forge une cuisine authentique, généreuse et inspirée de la gastronomie 
-                française, à laquelle il apporte sa touche personnelle, moderne et créative.
+                Porté par une passion profonde, il progresse rapidement et, dès l’âge de 22 ans, prend la tête de restaurants reconnus tels que Pharamond et Alcide, où il développe rigueur, rapidité et maîtrise technique.
               </p>
               <p>
-                Pour lui, cuisiner ne se limite pas à préparer un plat : c'est transmettre une émotion, une histoire, 
-                une énergie. Aujourd'hui, il poursuit son parcours avec passion et exigence, animé par l'envie de 
-                proposer une cuisine sincère, faite maison, avec du caractère.
+                Au fil de ses expériences, il forge une cuisine authentique, généreuse et inspirée de la gastronomie française, à laquelle il apporte sa touche personnelle, moderne et créative.
+              </p>
+              <p>
+                Pour lui, cuisiner ne se limite pas à préparer un plat : c’est transmettre une émotion, une histoire, une énergie.
+              </p>
+              <p>
+                Aujourd’hui, il poursuit son parcours avec passion et exigence, animé par l’envie de proposer une cuisine sincère, faite maison, avec du caractère.
               </p>
             </div>
           </div>

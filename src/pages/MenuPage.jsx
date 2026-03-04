@@ -35,7 +35,7 @@ const MenuPage = () => {
             soigneusement imaginés pour exalter chaque instant de votre repas.
           </p>
           <div className="menu-section">
-            <h2 className="menu-section-title">Dîner Romantique</h2>
+            <h2 className="menu-section-title">Menu du Chef – Découverte</h2>
             <div
               className="menu-photo-placeholder"
               role="button"
@@ -51,19 +51,15 @@ const MenuPage = () => {
                 <h3 className="menu-column-title">ENTREES</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Gambas en friture, sauce tartare</p>
+                    <p className="menu-item-text">Ceviche de thon, gombo, kiwi et concombre</p>
                   </div>
-                  <p className="menu-variant">(variante possible) Velouté de potimarron aux moules</p>
                 </div>
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Souris d'agneau</p>
-                  </div>
-                  <div className="menu-item">
-                    <p className="menu-item-text">Gratin dauphinois</p>
+                    <p className="menu-item-text">Souris d’agneau confite 6 h, jus d’agneau, purée de plantain</p>
                   </div>
                 </div>
               </div>
@@ -71,7 +67,7 @@ const MenuPage = () => {
                 <h3 className="menu-column-title">DESSERTS</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Pavlova aux fruits rouges</p>
+                    <p className="menu-item-text">Carpaccio de mangue ivoirienne, confit de gingembre, nuage de lait d’amande</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +75,7 @@ const MenuPage = () => {
           </div>
 
           <div className="menu-section">
-            <h2 className="menu-section-title">Menu Découverte</h2>
+            <h2 className="menu-section-title">Dîner Romantique</h2>
             <div
               className="menu-photo-placeholder"
               role="button"
@@ -95,7 +91,7 @@ const MenuPage = () => {
                 <h3 className="menu-column-title">ENTREES</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Velouté de potimarron aux moules</p>
+                    <p className="menu-item-text">Gambas en friture, tartare de betterave</p>
                   </div>
                 </div>
               </div>
@@ -103,10 +99,7 @@ const MenuPage = () => {
                 <h3 className="menu-column-title">PLATS</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Suprême de volaille</p>
-                  </div>
-                  <div className="menu-item">
-                    <p className="menu-item-text">Purée de pommes de terre ratte, crème boursin</p>
+                    <p className="menu-item-text">Magret de canard, purée de patates douces, jus de viande miellé</p>
                   </div>
                 </div>
               </div>
@@ -114,10 +107,7 @@ const MenuPage = () => {
                 <h3 className="menu-column-title">DESSERTS</h3>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Brioche perdue</p>
-                  </div>
-                  <div className="menu-item">
-                    <p className="menu-item-text">Caramel beurre salé, crème anglaise</p>
+                    <p className="menu-item-text">Éclat de pavlova à l’eau de rose, fruits rouges</p>
                   </div>
                 </div>
               </div>
