@@ -2,12 +2,23 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './MenuPage.css';
+import decouverteEntree from '../../assets/Menus/Decouverte-entree.JPG';
+import decouvertePlat from '../../assets/Menus/Decouverte-plat.JPG';
+import decouverteDessert from '../../assets/Menus/Decouverte-dessert.JPG';
+import romantiqueEntree from '../../assets/Menus/Romantique-entree.JPG';
+import romantiquePlat from '../../assets/Menus/Romantique-plat.JPG';
+import romantiqueDessert from '../../assets/Menus/Romantique-dessert.JPG';
+
+const menusImages = {
+  'menu-decouverte': [decouverteEntree, decouvertePlat, decouverteDessert],
+  'diner-romantique': [romantiqueEntree, romantiquePlat, romantiqueDessert],
+};
 
 const MenuPage = () => {
   const [lightbox, setLightbox] = useState({ menuId: null, index: 0 });
 
-  const openLightbox = (menuId) => {
-    setLightbox({ menuId, index: 0 });
+  const openLightbox = (menuId, startIndex = 0) => {
+    setLightbox({ menuId, index: startIndex });
   };
 
   const closeLightbox = () => {
@@ -16,13 +27,30 @@ const MenuPage = () => {
 
   const showPrevImage = (e) => {
     e.stopPropagation();
-    setLightbox((prev) => ({ ...prev, index: 0 }));
+    setLightbox((prev) => {
+      if (!prev.menuId) return prev;
+      const images = menusImages[prev.menuId] || [];
+      const total = images.length;
+      if (!total) return prev;
+      const newIndex = (prev.index - 1 + total) % total;
+      return { ...prev, index: newIndex };
+    });
   };
 
   const showNextImage = (e) => {
     e.stopPropagation();
-    setLightbox((prev) => ({ ...prev, index: 1 }));
+    setLightbox((prev) => {
+      if (!prev.menuId) return prev;
+      const images = menusImages[prev.menuId] || [];
+      const total = images.length;
+      if (!total) return prev;
+      const newIndex = (prev.index + 1) % total;
+      return { ...prev, index: newIndex };
+    });
   };
+
+  const currentImages = lightbox.menuId ? menusImages[lightbox.menuId] || [] : [];
+  const currentImage = currentImages[lightbox.index] || null;
 
   return (
     <div className="menu-page">
@@ -40,11 +68,15 @@ const MenuPage = () => {
               className="menu-photo-placeholder"
               role="button"
               tabIndex={0}
-              onClick={() => openLightbox('diner-romantique')}
-              onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique')}
-              aria-label="Agrandir la photo du menu"
+              onClick={() => openLightbox('menu-decouverte', 0)}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 0)}
+              aria-label="Agrandir les photos du Menu du Chef – Découverte"
             >
-              <span className="menu-photo-placeholder-label">Photo à venir</span>
+              <img
+                src={decouverteEntree}
+                alt="Entrée du Menu du Chef – Découverte"
+                className="menu-photo-thumbnail"
+              />
             </div>
             <div className="menu-columns">
               <div className="menu-column">
@@ -80,11 +112,15 @@ const MenuPage = () => {
               className="menu-photo-placeholder"
               role="button"
               tabIndex={0}
-              onClick={() => openLightbox('menu-decouverte')}
-              onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte')}
-              aria-label="Agrandir la photo du menu"
+              onClick={() => openLightbox('diner-romantique', 0)}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 0)}
+              aria-label="Agrandir les photos du Dîner Romantique"
             >
-              <span className="menu-photo-placeholder-label">Photo à venir</span>
+              <img
+                src={romantiqueEntree}
+                alt="Entrée du Dîner Romantique"
+                className="menu-photo-thumbnail"
+              />
             </div>
             <div className="menu-columns">
               <div className="menu-column">
@@ -138,9 +174,17 @@ const MenuPage = () => {
                     ‹
                   </button>
                   <div className="menu-lightbox-placeholder">
-                    <span className="menu-lightbox-placeholder-label">
-                      Image {lightbox.index + 1} à venir
-                    </span>
+                    {currentImage && (
+                      <img
+                        src={currentImage}
+                        alt={`Photo ${lightbox.index + 1} du ${
+                          lightbox.menuId === 'menu-decouverte'
+                            ? 'Menu du Chef – Découverte'
+                            : 'Dîner Romantique'
+                        }`}
+                        className="menu-lightbox-image"
+                      />
+                    )}
                   </div>
                   <button
                     type="button"

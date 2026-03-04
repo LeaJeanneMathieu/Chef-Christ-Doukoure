@@ -70,9 +70,9 @@
 
 .menu-photo-placeholder {
   width: 100%;
-  max-width: 320px;
-  aspect-ratio: 1;
-  margin: 0 auto var(--spacing-xl);
+  max-width: none;
+  aspect-ratio: 21 / 9;
+  margin: 0 auto var(--spacing-lg);
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -82,6 +82,7 @@
   justify-content: center;
   cursor: pointer;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
 }
 
 .menu-photo-placeholder:hover {
@@ -94,6 +95,13 @@
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.35);
   font-style: italic;
+}
+
+.menu-photo-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .menu-columns {
@@ -257,6 +265,13 @@
   font-size: 1.1rem;
   color: rgba(0, 0, 0, 0.4);
   font-style: italic;
+}
+
+.menu-lightbox-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 @media (max-width: 1024px) {
