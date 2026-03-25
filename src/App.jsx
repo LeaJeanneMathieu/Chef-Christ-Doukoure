@@ -9,6 +9,9 @@ import Footer from './components/Footer';
 import MenuPage from './pages/MenuPage';
 import AProposPage from './pages/AProposPage';
 import ContactPage from './pages/ContactPage';
+import PolitiqueConfidentialitePage from './pages/PolitiqueConfidentialitePage';
+import MentionsLegalesPage from './pages/MentionsLegalesPage';
+import PolitiqueCookiesPage from './pages/PolitiqueCookiesPage';
 import './App.css';
 
 const Galerie = lazy(() => import('./components/Galerie'));
@@ -38,6 +41,9 @@ function App() {
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/apropos" element={<AProposPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+          <Route path="/politique-cookies" element={<PolitiqueCookiesPage />} />
         </Routes>
       </div>
     </Router>

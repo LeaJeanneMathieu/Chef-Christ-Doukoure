@@ -8,11 +8,11 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-links">
-            <a href="/politique-confidentialite">Politique de confidentialité</a>
+            <Link to="/politique-confidentialite">Politique de confidentialité</Link>
             <span className="footer-separator">l</span>
-            <a href="/mentions-legales">Mentions légales</a>
+            <Link to="/mentions-legales">Mentions légales</Link>
             <span className="footer-separator">l</span>
-            <a href="/politique-cookies">Politique d'utilisation des cookies</a>
+            <Link to="/politique-cookies">Politique d'utilisation des cookies</Link>
           </div>
           <div className="footer-logo">
             <img src={logo} alt="Chef Christ Doukouré" />

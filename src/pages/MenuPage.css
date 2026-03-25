@@ -104,6 +104,15 @@
   display: block;
 }
 
+.menu-photo-placeholder-top {
+  display: block;
+}
+
+.menu-photo-placeholder-mobile-middle {
+  /* Affichée uniquement sur mobile, pour s'insérer entre ENTRÉES et PLATS */
+  display: none;
+}
+
 .menu-columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -330,6 +339,17 @@
   .menu-lightbox-close {
     top: 0.6rem;
     right: 0.6rem;
+  }
+
+  .menu-photo-placeholder-top {
+    display: none;
+  }
+
+  .menu-photo-placeholder-mobile-middle {
+    display: flex;
+    /* Entre deux colonnes, on réduit légèrement l'espace vertical */
+    margin: 0 auto var(--spacing-md);
+    max-width: 100%;
   }
 }
 

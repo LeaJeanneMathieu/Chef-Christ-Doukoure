@@ -115,7 +115,7 @@ const MenuPage = () => {
           <div className="menu-section">
             <h2 className="menu-section-title">Menu du Chef – Découverte</h2>
             <div
-              className="menu-photo-placeholder"
+              className="menu-photo-placeholder menu-photo-placeholder-top"
               role="button"
               tabIndex={0}
               onClick={() => openLightbox('menu-decouverte', 0)}
@@ -136,6 +136,20 @@ const MenuPage = () => {
                     <p className="menu-item-text">Ceviche de thon, gombo, kiwi et concombre</p>
                   </div>
                 </div>
+              </div>
+              <div
+                className="menu-photo-placeholder menu-photo-placeholder-mobile-middle"
+                role="button"
+                tabIndex={0}
+                onClick={() => openLightbox('menu-decouverte', 1)}
+                onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 1)}
+                aria-label="Agrandir les photos du Menu du Chef – Découverte"
+              >
+                <img
+                  src={decouvertePlat}
+                  alt="Plat du Menu du Chef – Découverte"
+                  className="menu-photo-thumbnail"
+                />
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
@@ -159,7 +173,7 @@ const MenuPage = () => {
           <div className="menu-section">
             <h2 className="menu-section-title">Dîner Romantique</h2>
             <div
-              className="menu-photo-placeholder"
+              className="menu-photo-placeholder menu-photo-placeholder-top"
               role="button"
               tabIndex={0}
               onClick={() => openLightbox('diner-romantique', 0)}
@@ -180,6 +194,20 @@ const MenuPage = () => {
                     <p className="menu-item-text">Gambas en friture, tartare de betterave</p>
                   </div>
                 </div>
+              </div>
+              <div
+                className="menu-photo-placeholder menu-photo-placeholder-mobile-middle"
+                role="button"
+                tabIndex={0}
+                onClick={() => openLightbox('diner-romantique', 1)}
+                onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 1)}
+                aria-label="Agrandir les photos du Dîner Romantique"
+              >
+                <img
+                  src={romantiquePlat}
+                  alt="Plat du Dîner Romantique"
+                  className="menu-photo-thumbnail"
+                />
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>

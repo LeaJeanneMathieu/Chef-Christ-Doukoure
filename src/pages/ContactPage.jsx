@@ -70,7 +70,7 @@ const ContactPage = () => {
   return (
     <div className="contact-page">
       <Header />
-      <section className="contact section" ref={sectionRef}>
+      <section id="contact" className="contact section" ref={sectionRef}>
         <div className="container">
           <h1 className="section-title">CONTACT</h1>
           <div className="contact-content">

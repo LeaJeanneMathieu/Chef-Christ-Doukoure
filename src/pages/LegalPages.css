@@ -1,0 +1,33 @@
+.legal-content {
+  max-width: 900px;
+}
+
+.legal-content p {
+  margin: 0 0 var(--spacing-sm);
+}
+
+.legal-content h2 {
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.legal-content h3 {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+}
+
+.legal-content ul,
+.legal-content ol {
+  padding-left: 1.25rem;
+  margin: 0 0 var(--spacing-md);
+}
+
+.legal-content li {
+  margin: 0.25rem 0;
+}
+
+.legal-content .small {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
