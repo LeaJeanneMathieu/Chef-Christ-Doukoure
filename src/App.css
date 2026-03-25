@@ -55,7 +55,9 @@
 /* Responsive */
 @media (max-width: 768px) {
   .section {
-    padding: var(--spacing-lg) 0;
+    /* Le header est `position: fixed` : on doit compenser l'espace en haut
+       pour éviter que le contenu soit masqué sur mobile. */
+    padding: 120px 0 var(--spacing-lg) 0;
   }
   
   .container {
