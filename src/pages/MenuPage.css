@@ -342,14 +342,11 @@
   }
 
   .menu-photo-placeholder-top {
-    display: none;
+    display: block;
   }
 
   .menu-photo-placeholder-mobile-middle {
-    display: flex;
-    /* Entre deux colonnes, on réduit légèrement l'espace vertical */
-    margin: 0 auto var(--spacing-md);
-    max-width: 100%;
+    display: none;
   }
 }
 
