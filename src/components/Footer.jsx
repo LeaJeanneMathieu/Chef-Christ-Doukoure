@@ -13,6 +13,8 @@ const Footer = () => {
             <Link to="/mentions-legales">Mentions légales</Link>
             <span className="footer-separator">l</span>
             <Link to="/politique-cookies">Politique d'utilisation des cookies</Link>
+            <span className="footer-separator">l</span>
+            <a href="mailto:contact@chefdoukoure.fr">contact@chefdoukoure.fr</a>
           </div>
           <div className="footer-logo">
             <img src={logo} alt="Chef Christ Doukouré" />
