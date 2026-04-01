@@ -165,7 +165,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Ceviche de thon, gombo, kiwi et concombre</p>
+                    <p className="menu-item-text">Ceviche de thon gombo kiwi concombres piment</p>
                   </div>
                 </div>
               </div>
@@ -187,7 +187,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Souris d’agneau confite 6 h, jus d’agneau, purée de plantain</p>
+                    <p className="menu-item-text">Souris d’agneau 6h jus d’agneau écrasé de purée plantains</p>
                   </div>
                 </div>
               </div>
@@ -209,7 +209,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Carpaccio de mangue ivoirienne, confit de gingembre, nuage de lait d’amande</p>
+                    <p className="menu-item-text">Carpaccio de mangue condiment gingembre grenade glace lait d’amandes</p>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Gambas en friture, tartare de betterave</p>
+                    <p className="menu-item-text">Croustillant de gambas culis de betterave réduit œuf de truite</p>
                   </div>
                 </div>
               </div>
@@ -273,7 +273,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Magret de canard, purée de patates douces, jus de viande miellé</p>
+                    <p className="menu-item-text">Magret de canard rosée purée de patates douce jus réduit aux épices</p>
                   </div>
                 </div>
               </div>
@@ -295,7 +295,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Éclat de pavlova à l’eau de rose, fruits rouges</p>
+                    <p className="menu-item-text">Pavlova déstructurée aux fruits rouges chantilly à l’eau de rose</p>
                   </div>
                 </div>
               </div>

@@ -84,13 +84,13 @@ const Evenements = () => {
                 DES ÉVÉNEMENTS<br />SUR MESURE
               </h2>
               <p>
-                Vivez une expérience gastronomique d'exception orchestrée par le Chef Christ DOUKOURÉ et ses équipes.
+                Vivez une expérience culinaire orchestrée par le Chef Christ DOUKOURÉ et son équipe.
               </p>
               <p>
-                Dans le cadre de votre choix, chaque menu est imaginé pour sublimer vos envies.
+                Chaque menu est imaginé selon vos envies, mêlant la cuisine française aux inspirations de ses origines.
               </p>
               <p>
-                Un moment privilégié, où la gastronomie se mêle à l'élégance, la générosité et l'émotion.
+                Un moment de partage, de saveurs et de convivialité.
               </p>
               <button className="evenements-button" onClick={scrollToPrestations}>
                 DÉCOUVRIR

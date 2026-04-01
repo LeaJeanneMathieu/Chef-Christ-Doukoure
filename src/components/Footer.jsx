@@ -30,6 +30,13 @@ const Footer = () => {
                 Instagram
               </a>
               <a
+                href="https://www.facebook.com/share/184cPmXXTW/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Facebook
+              </a>
+              <a
                 href="https://www.tiktok.com/@christ.doukoure"
                 target="_blank"
                 rel="noreferrer"
