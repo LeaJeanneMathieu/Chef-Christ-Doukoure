@@ -108,9 +108,11 @@
   display: block;
 }
 
-.menu-photo-placeholder-mobile-middle {
-  /* Affichée uniquement sur mobile, pour s'insérer entre ENTRÉES et PLATS */
+.menu-photo-placeholder-category {
   display: none;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto var(--spacing-md);
+  max-width: 520px;
 }
 
 .menu-columns {
@@ -342,10 +344,15 @@
   }
 
   .menu-photo-placeholder-top {
+    display: none;
+  }
+
+  .menu-photo-placeholder-category {
     display: block;
   }
 
-  .menu-photo-placeholder-mobile-middle {
+  /* En mobile, pas d'effet "carrousel" (flèches masquées) */
+  .menu-lightbox-arrow {
     display: none;
   }
 }

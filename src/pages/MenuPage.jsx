@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './MenuPage.css';
@@ -16,7 +16,16 @@ const menusImages = {
 
 const MenuPage = () => {
   const [lightbox, setLightbox] = useState({ menuId: null, index: 0 });
+  const [isMobile, setIsMobile] = useState(false);
   const touchStartXRef = useRef(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
 
   const openLightbox = (menuId, startIndex = 0) => {
     setLightbox({ menuId, index: startIndex });
@@ -28,6 +37,7 @@ const MenuPage = () => {
 
   const showPrevImage = (e) => {
     e.stopPropagation();
+    if (isMobile) return;
     setLightbox((prev) => {
       if (!prev.menuId) return prev;
       const images = menusImages[prev.menuId] || [];
@@ -40,6 +50,7 @@ const MenuPage = () => {
 
   const showNextImage = (e) => {
     e.stopPropagation();
+    if (isMobile) return;
     setLightbox((prev) => {
       if (!prev.menuId) return prev;
       const images = menusImages[prev.menuId] || [];
@@ -51,6 +62,7 @@ const MenuPage = () => {
   };
 
   const goToPrevImage = () => {
+    if (isMobile) return;
     setLightbox((prev) => {
       if (!prev.menuId) return prev;
       const images = menusImages[prev.menuId] || [];
@@ -62,6 +74,7 @@ const MenuPage = () => {
   };
 
   const goToNextImage = () => {
+    if (isMobile) return;
     setLightbox((prev) => {
       if (!prev.menuId) return prev;
       const images = menusImages[prev.menuId] || [];
@@ -73,11 +86,13 @@ const MenuPage = () => {
   };
 
   const handleTouchStart = (e) => {
+    if (isMobile) return;
     if (!e.touches || e.touches.length === 0) return;
     touchStartXRef.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e) => {
+    if (isMobile) return;
     if (touchStartXRef.current === null) return;
     if (!e.changedTouches || e.changedTouches.length === 0) return;
 
@@ -99,8 +114,11 @@ const MenuPage = () => {
     touchStartXRef.current = null;
   };
 
-  const currentImages = lightbox.menuId ? menusImages[lightbox.menuId] || [] : [];
-  const currentImage = currentImages[lightbox.index] || null;
+  const allImagesForLightbox = lightbox.menuId ? menusImages[lightbox.menuId] || [] : [];
+  const lightboxSingleImage = allImagesForLightbox[lightbox.index] || null;
+  const currentImages = isMobile && lightboxSingleImage ? [lightboxSingleImage] : allImagesForLightbox;
+  const currentIndex = isMobile ? 0 : lightbox.index;
+  const currentImage = currentImages[currentIndex] || null;
 
   return (
     <div className="menu-page">
@@ -131,28 +149,42 @@ const MenuPage = () => {
             <div className="menu-columns">
               <div className="menu-column">
                 <h3 className="menu-column-title">ENTREES</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('menu-decouverte', 0)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 0)}
+                  aria-label="Agrandir la photo de l'entrée du Menu du Chef – Découverte"
+                >
+                  <img
+                    src={decouverteEntree}
+                    alt="Entrée du Menu du Chef – Découverte"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Ceviche de thon, gombo, kiwi et concombre</p>
                   </div>
                 </div>
               </div>
-              <div
-                className="menu-photo-placeholder menu-photo-placeholder-mobile-middle"
-                role="button"
-                tabIndex={0}
-                onClick={() => openLightbox('menu-decouverte', 1)}
-                onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 1)}
-                aria-label="Agrandir les photos du Menu du Chef – Découverte"
-              >
-                <img
-                  src={decouvertePlat}
-                  alt="Plat du Menu du Chef – Découverte"
-                  className="menu-photo-thumbnail"
-                />
-              </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('menu-decouverte', 1)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 1)}
+                  aria-label="Agrandir la photo du plat du Menu du Chef – Découverte"
+                >
+                  <img
+                    src={decouvertePlat}
+                    alt="Plat du Menu du Chef – Découverte"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Souris d’agneau confite 6 h, jus d’agneau, purée de plantain</p>
@@ -161,6 +193,20 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">DESSERTS</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('menu-decouverte', 2)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('menu-decouverte', 2)}
+                  aria-label="Agrandir la photo du dessert du Menu du Chef – Découverte"
+                >
+                  <img
+                    src={decouverteDessert}
+                    alt="Dessert du Menu du Chef – Découverte"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Carpaccio de mangue ivoirienne, confit de gingembre, nuage de lait d’amande</p>
@@ -189,28 +235,42 @@ const MenuPage = () => {
             <div className="menu-columns">
               <div className="menu-column">
                 <h3 className="menu-column-title">ENTREES</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('diner-romantique', 0)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 0)}
+                  aria-label="Agrandir la photo de l'entrée du Dîner Romantique"
+                >
+                  <img
+                    src={romantiqueEntree}
+                    alt="Entrée du Dîner Romantique"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Gambas en friture, tartare de betterave</p>
                   </div>
                 </div>
               </div>
-              <div
-                className="menu-photo-placeholder menu-photo-placeholder-mobile-middle"
-                role="button"
-                tabIndex={0}
-                onClick={() => openLightbox('diner-romantique', 1)}
-                onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 1)}
-                aria-label="Agrandir les photos du Dîner Romantique"
-              >
-                <img
-                  src={romantiquePlat}
-                  alt="Plat du Dîner Romantique"
-                  className="menu-photo-thumbnail"
-                />
-              </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">PLATS</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('diner-romantique', 1)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 1)}
+                  aria-label="Agrandir la photo du plat du Dîner Romantique"
+                >
+                  <img
+                    src={romantiquePlat}
+                    alt="Plat du Dîner Romantique"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Magret de canard, purée de patates douces, jus de viande miellé</p>
@@ -219,6 +279,20 @@ const MenuPage = () => {
               </div>
               <div className="menu-column">
                 <h3 className="menu-column-title">DESSERTS</h3>
+                <div
+                  className="menu-photo-placeholder menu-photo-placeholder-category"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => openLightbox('diner-romantique', 2)}
+                  onKeyDown={(e) => e.key === 'Enter' && openLightbox('diner-romantique', 2)}
+                  aria-label="Agrandir la photo du dessert du Dîner Romantique"
+                >
+                  <img
+                    src={romantiqueDessert}
+                    alt="Dessert du Dîner Romantique"
+                    className="menu-photo-thumbnail"
+                  />
+                </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
                     <p className="menu-item-text">Éclat de pavlova à l’eau de rose, fruits rouges</p>
@@ -259,7 +333,7 @@ const MenuPage = () => {
                     {currentImage && (
                       <img
                         src={currentImage}
-                        alt={`Photo ${lightbox.index + 1} du ${
+                        alt={`Photo ${currentIndex + 1} du ${
                           lightbox.menuId === 'menu-decouverte'
                             ? 'Menu du Chef – Découverte'
                             : 'Dîner Romantique'
