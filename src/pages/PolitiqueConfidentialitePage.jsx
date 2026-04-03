@@ -41,7 +41,7 @@ const PolitiqueConfidentialitePage = () => {
           <p>
             Le responsable du traitement des données personnelles est <strong>Chef Christ Doukouré</strong>.
             <br />
-            Contact : <a href="mailto:contact@chefdoukoure.fr">contact@chefdoukoure.fr</a>
+            Contact : <a href="mailto:contactchristdoukoure@gmail.com">contactchristdoukoure@gmail.com</a>
           </p>
 
           <h2>2. Données collectées</h2>
@@ -86,7 +86,7 @@ const PolitiqueConfidentialitePage = () => {
             retirer votre consentement lorsque le traitement repose sur celui-ci.
           </p>
           <p className="small">
-            Pour exercer vos droits, contactez-nous à : <a href="mailto:contact@chefdoukoure.fr">contact@chefdoukoure.fr</a>
+            Pour exercer vos droits, contactez-nous à : <a href="mailto:contactchristdoukoure@gmail.com">contactchristdoukoure@gmail.com</a>
           </p>
 
           <h2>8. Cookies</h2>

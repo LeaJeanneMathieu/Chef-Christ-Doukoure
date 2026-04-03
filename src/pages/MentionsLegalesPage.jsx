@@ -36,7 +36,7 @@ const MentionsLegalesPage = () => {
           <p>
             Le présent site est édité par <strong>Chef Christ Doukouré</strong>.
             <br />
-            Email : <a href="mailto:contact@chefdoukoure.fr">contact@chefdoukoure.fr</a>
+            Email : <a href="mailto:contactchristdoukoure@gmail.com">contactchristdoukoure@gmail.com</a>
           </p>
 
           <h2>2. Hébergeur</h2>
@@ -61,7 +61,7 @@ const MentionsLegalesPage = () => {
           <h2>5. Contact</h2>
           <p>
             Pour toute question relative au site, vous pouvez contacter l’éditeur via :{' '}
-            <a href="mailto:contact@chefdoukoure.fr">contact@chefdoukoure.fr</a>.
+            <a href="mailto:contactchristdoukoure@gmail.com">contactchristdoukoure@gmail.com</a>.
           </p>
 
           <h2>6. Données personnelles</h2>
