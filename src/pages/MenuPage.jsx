@@ -187,7 +187,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Souris d’agneau 6h jus d’agneau écrasé de purée plantains</p>
+                    <p className="menu-item-text">Souris d’agneau 6h jus d’agneau écrasé de plantains</p>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@ const MenuPage = () => {
                 </div>
                 <div className="menu-items-list">
                   <div className="menu-item">
-                    <p className="menu-item-text">Croustillant de gambas culis de betterave réduit œuf de truite</p>
+                    <p className="menu-item-text">Croustillant de gambas, coulis de betterave et œufs de truite.</p>
                   </div>
                 </div>
               </div>
